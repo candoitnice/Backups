@@ -17,6 +17,8 @@ public class ClientEngine : IClient
         //    TimeTick.Instance.AddDelayEvent(Init, null, 0.1f);
         //}
         EventManager.Instance.onApplicationQuit+= Instance_OnApplicationQuitEvent;
+        Main.Instance.OnSendDataEvent += Instance_OnSendDataEvent;
+
     }
 
     private void Instance_OnApplicationQuitEvent()
@@ -47,6 +49,20 @@ public class ClientEngine : IClient
     private void Init(object obj)
     {
         Resgister();
+    }
+
+    private void Instance_OnSendDataEvent()
+    {
+        if (Recovery.GameData.Instance.GDP_Bike != null)
+        {
+            Recovery.GameData.Instance.GDP_Bike.Pos.SetValue(Recovery.GameData.Instance.mainPlayer.pos);
+            Parameter p = new Parameter();
+            p.OperaCode = (byte)Operation.GameSyn;
+            p.Parameters = new Dictionary<byte, object>();
+            ParameterTool.AddParmerer(p.Parameters, PameraCode.SubCode, SubCode.GDATA);
+            ParameterTool.AddParmerer(p.Parameters, SubCode.GDATA, Recovery.GameData.Instance.GDP_Bike);
+            OnSendParamer(p);
+        }
     }
 
     public void Connect(IPEndPoint endpoint)

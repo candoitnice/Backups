@@ -217,7 +217,6 @@ namespace Recovery
                 GDP_Bike.bike.offset = Recovery.GameData.Instance.mainPlayer.L_symmetry;
                 GDP_Bike.bike.distance = Recovery.GameData.Instance.mainPlayer.distance;
                 GDP_Bike.bike.speedmax = Recovery.GameData.Instance.mainPlayer.speedmax;
-                GDP_Bike.Pos.SetValue(Recovery.GameData.Instance.mainPlayer.pos);
                 GameData.Instance.GDP_Bike = GDP_Bike;
                 
                     GameManager.instance.queue.Enqueue("DAT");

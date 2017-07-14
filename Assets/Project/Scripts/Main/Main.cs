@@ -10,6 +10,12 @@ public class Main : MonoBehaviour
 
     public Recovery.Type.GameEditionType GEType =Recovery.Type.GameEditionType.Adult;
 
+    public delegate void HandleOnSendDataEvent();
+    public event HandleOnSendDataEvent OnSendDataEvent;
+    public float sendTime = 0f;
+    public float fps = 30;
+    public float delaytime = 0f;
+
     void Awake()
     {
         Instance = this;
@@ -26,6 +32,7 @@ public class Main : MonoBehaviour
                 break;
             }
         }
+        delaytime = 1f / fps;
     }
     // Use this for initialization
     void Start()
@@ -60,6 +67,16 @@ public class Main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      
+        sendTime += Time.deltaTime;
+
+        if(sendTime>= delaytime)
+        {
+            sendTime=0;
+            if (OnSendDataEvent != null)
+                OnSendDataEvent();
+        }
+
         EventManager.Instance._OnGameUpdate();
     }
 

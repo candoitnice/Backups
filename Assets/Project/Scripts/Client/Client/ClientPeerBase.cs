@@ -33,8 +33,8 @@ namespace SportClient
 
             OnSendMsgThread = new Thread(new ThreadStart(OnSendPData));
             OnSendMsgThread.Start();
-            OnSendGDataThread = new Thread(new ThreadStart(OnSendGData));
-            OnSendGDataThread.Start();
+            //OnSendGDataThread = new Thread(new ThreadStart(OnSendGData));
+            //OnSendGDataThread.Start();
 
             OnThreadStart(OnRevicveMsgThread, OnReciveData);
         }
