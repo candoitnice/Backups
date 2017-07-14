@@ -32,7 +32,7 @@ namespace Assets.Project.Scripts.Client
                     break;
                 case SubCode.GDATA:
                     //UIUpdateManaget.Instance.debug.text = ParameterTool.GetParmerer<object>(Parma.Parameters, subcode).ToString();
-                    InfoHandle.Instance.gameDataPacketBikeQueue.Enqueue(ParameterTool.GetParmerer<GameDataPacketBike>(Parma.Parameters, subcode));
+                    Recovery.InfoHandle.Instance.gameDataPacketBikeQueue.Enqueue(ParameterTool.GetParmerer<GameDataPacketBike>(Parma.Parameters, subcode));
                     break;
                 case SubCode.DKLJ:
                     EventManager.Instance._OnDisconnect(new GameDataPacketBike());

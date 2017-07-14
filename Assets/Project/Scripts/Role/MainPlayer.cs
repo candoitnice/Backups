@@ -56,7 +56,7 @@ public class MainPlayer : RoleBase
                 base.Move();
             }
             else
-                GetComponentInChildren<Animator>().speed = 0f; if (isMainPlay)
+                anim.speed = 0f; if (isMainPlay)
             {
                 if (transform.position.z > 252)
                 {

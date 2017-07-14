@@ -21,6 +21,7 @@ namespace SportClient
 
         public ConnectState state = ConnectState.Close;
         public Thread OnSendMsgThread { get; private set; }
+        public Thread OnSendGDataThread { get; private set; }
 
         ThreadsPool pool;
         public ClientPeerBase(IPEndPoint ip, IClient client)
@@ -32,6 +33,8 @@ namespace SportClient
 
             OnSendMsgThread = new Thread(new ThreadStart(OnSendPData));
             OnSendMsgThread.Start();
+            OnSendGDataThread = new Thread(new ThreadStart(OnSendGData));
+            OnSendGDataThread.Start();
 
             OnThreadStart(OnRevicveMsgThread, OnReciveData);
         }
@@ -66,6 +69,23 @@ namespace SportClient
                         Console.WriteLine(ex.Message);
                         OnDisconnect();
                     }
+                }
+            }
+        }
+        public void OnSendGData()
+        {
+            while (isRunning)
+            {
+                Thread.Sleep(50);
+                if (Recovery.GameData.Instance.GDP_Bike != null)
+                {
+                    Parameter p = new Parameter();
+                    p.OperaCode = (byte)Operation.GameSyn;
+                    p.Parameters = new Dictionary<byte, object>();
+                    ParameterTool.AddParmerer(p.Parameters, PameraCode.SubCode, SubCode.GDATA);
+                    ParameterTool.AddParmerer(p.Parameters, SubCode.GDATA, Recovery.GameData.Instance.GDP_Bike);
+                    lock (MsgQueue.mQueue)
+                        MsgQueue.mQueue.Enqueue(p);
                 }
             }
         }
@@ -175,6 +195,7 @@ namespace SportClient
             //}
         }
 
+
         public void OnDisconnect()
         {
             if (tcpClient != null) tcpClient.Close();
@@ -221,6 +242,7 @@ namespace SportClient
             state = ConnectState.Close;
             OnThreadAbort(OnRevicveMsgThread);
             OnThreadAbort(OnSendMsgThread);
+            OnThreadAbort(OnSendGDataThread);
             client.OnConnectStateChange(state);
             GameManager.instance.queue.Enqueue("CloentClose");
         }

@@ -32,7 +32,7 @@ public class Main : MonoBehaviour
     {
         UIUpdateManaget.Instance.InitUI();
         Http_WWW.Instance.Init();
-        InfoHandle.Instance.InitEvent();
+        Recovery.InfoHandle.Instance.InitEvent();
         EventManager.Instance.onGameUpdate+=GameManager.instance.QueuePlay;
         EventManager.Instance.onGameInit += Init;
     }
@@ -71,7 +71,7 @@ public class Main : MonoBehaviour
         //pr.Kill();
         MySocket.Instance.close();
         MyClient.Instance.close();
-        InfoHandle.Instance.CloseEvent();
+        Recovery.InfoHandle.Instance.CloseEvent();
         EventManager.Instance.onGameUpdate -= GameManager.instance.QueuePlay;
         EventManager.Instance._OnApplicationQuit();
     }

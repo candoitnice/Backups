@@ -69,6 +69,8 @@ namespace Recovery
         /// 当前坡的索引
         /// </summary>
         public int slopeCount;
+
+        public GameDataPacketBike GDP_Bike;
         #endregion
 
         #region Json

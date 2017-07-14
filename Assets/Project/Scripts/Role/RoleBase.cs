@@ -73,7 +73,7 @@ public class RoleBase : MonoBehaviour
 
     private GameObject car;
 
-    private Animator anim;
+    public Animator anim;
 
     public virtual void Start()
     {
@@ -196,19 +196,13 @@ public class RoleBase : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, vec, Time.deltaTime*10f);
         return vec - vec2;
     }
-    //int count;
-    //public void SetPos()
-    //{
-    //    count++;
-    //    if (count >= 20)
-    //    {
-    //        //if (GameData.Instance.mainPlayer.frequency <= 0)
-    //        //    transform.position = new Vector3(pos.x, pos.y, distance * 6 - (252 * GameData.Instance.mainPlayer.frequency));
-    //        //else
-    //        //{
-    //        //    transform.position = pos-new Vector3(0,0,252* GameData.Instance.mainPlayer.frequency);
-    //        //}
-    //        count = 0;
-    //    }
-    //}
+    public void SetPos()
+    {
+        if (Recovery.GameData.Instance.mainPlayer.frequency <= 0)
+            transform.position =pos;
+        else
+        {
+            transform.position = pos - new Vector3(0, 0, 252 * Recovery.GameData.Instance.mainPlayer.frequency);
+        }
+    }
 }
