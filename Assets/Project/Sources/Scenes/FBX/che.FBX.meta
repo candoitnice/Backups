@@ -1,0 +1,466 @@
+fileFormatVersion: 2
+guid: e840f0b3606d8e946b6741798ff06594
+timeCreated: 1494243571
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 237
+    100002: AxGhidon
+    100004: AxPedalier
+    100006: Bip01 Head026
+    100008: Bip01 HeadNub026
+    100010: Bip01 L Calf026
+    100012: Bip01 L Clavicle026
+    100014: Bip01 L Finger0Nub026
+    100016: Bip01 L Finger172
+    100018: Bip01 L Finger173
+    100020: Bip01 L Finger174
+    100022: Bip01 L Finger175
+    100024: Bip01 L Finger176
+    100026: Bip01 L Finger177
+    100028: Bip01 L Finger1Nub026
+    100030: Bip01 L Finger2Nub026
+    100032: Bip01 L Foot026
+    100034: Bip01 L Forearm026
+    100036: Bip01 L Hand026
+    100038: Bip01 L Thigh026
+    100040: Bip01 L Toe026
+    100042: Bip01 L Toe0Nub026
+    100044: Bip01 L UpperArm026
+    100046: Bip01 Neck026
+    100048: Bip01 Pelvis026
+    100050: Bip01 R Calf026
+    100052: Bip01 R Clavicle026
+    100054: Bip01 R Finger0Nub026
+    100056: Bip01 R Finger172
+    100058: Bip01 R Finger173
+    100060: Bip01 R Finger174
+    100062: Bip01 R Finger175
+    100064: Bip01 R Finger176
+    100066: Bip01 R Finger177
+    100068: Bip01 R Finger1Nub026
+    100070: Bip01 R Finger2Nub026
+    100072: Bip01 R Foot026
+    100074: Bip01 R Forearm026
+    100076: Bip01 R Hand026
+    100078: Bip01 R Thigh026
+    100080: Bip01 R Toe026
+    100082: Bip01 R Toe0Nub026
+    100084: Bip01 R UpperArm026
+    100086: Bip01 Spine052
+    100088: Bip01 Spine053
+    100090: Bip027
+    100092: //RootNode
+    100094: houzhaungpan
+    100096: liantiao
+    100098: liantuo
+    100100: ManetaSt001
+    100102: ManetaSt002
+    100104: ManetaVitezeDr
+    100106: ManetaVitezeDr001
+    100108: Mesh006
+    100110: Mesh05
+    100112: Object033
+    100114: Object035
+    100116: Pedale
+    100118: ProtectieManDr
+    100120: ProtectieManDr001
+    100122: sportive10_m_mediumpoly
+    100124: SurubSus001
+    100126: tuxing
+    400000: 237
+    400002: AxGhidon
+    400004: AxPedalier
+    400006: Bip01 Head026
+    400008: Bip01 HeadNub026
+    400010: Bip01 L Calf026
+    400012: Bip01 L Clavicle026
+    400014: Bip01 L Finger0Nub026
+    400016: Bip01 L Finger172
+    400018: Bip01 L Finger173
+    400020: Bip01 L Finger174
+    400022: Bip01 L Finger175
+    400024: Bip01 L Finger176
+    400026: Bip01 L Finger177
+    400028: Bip01 L Finger1Nub026
+    400030: Bip01 L Finger2Nub026
+    400032: Bip01 L Foot026
+    400034: Bip01 L Forearm026
+    400036: Bip01 L Hand026
+    400038: Bip01 L Thigh026
+    400040: Bip01 L Toe026
+    400042: Bip01 L Toe0Nub026
+    400044: Bip01 L UpperArm026
+    400046: Bip01 Neck026
+    400048: Bip01 Pelvis026
+    400050: Bip01 R Calf026
+    400052: Bip01 R Clavicle026
+    400054: Bip01 R Finger0Nub026
+    400056: Bip01 R Finger172
+    400058: Bip01 R Finger173
+    400060: Bip01 R Finger174
+    400062: Bip01 R Finger175
+    400064: Bip01 R Finger176
+    400066: Bip01 R Finger177
+    400068: Bip01 R Finger1Nub026
+    400070: Bip01 R Finger2Nub026
+    400072: Bip01 R Foot026
+    400074: Bip01 R Forearm026
+    400076: Bip01 R Hand026
+    400078: Bip01 R Thigh026
+    400080: Bip01 R Toe026
+    400082: Bip01 R Toe0Nub026
+    400084: Bip01 R UpperArm026
+    400086: Bip01 Spine052
+    400088: Bip01 Spine053
+    400090: Bip027
+    400092: //RootNode
+    400094: houzhaungpan
+    400096: liantiao
+    400098: liantuo
+    400100: ManetaSt001
+    400102: ManetaSt002
+    400104: ManetaVitezeDr
+    400106: ManetaVitezeDr001
+    400108: Mesh006
+    400110: Mesh05
+    400112: Object033
+    400114: Object035
+    400116: Pedale
+    400118: ProtectieManDr
+    400120: ProtectieManDr001
+    400122: sportive10_m_mediumpoly
+    400124: SurubSus001
+    400126: tuxing
+    2300000: 237
+    2300002: AxPedalier
+    2300004: houzhaungpan
+    2300006: liantiao
+    2300008: liantuo
+    2300010: ManetaSt001
+    2300012: ManetaSt002
+    2300014: ManetaVitezeDr
+    2300016: ManetaVitezeDr001
+    2300018: Mesh006
+    2300020: Mesh05
+    2300022: Object033
+    2300024: Object035
+    2300026: Pedale
+    2300028: ProtectieManDr
+    2300030: ProtectieManDr001
+    2300032: SurubSus001
+    3300000: 237
+    3300002: AxPedalier
+    3300004: houzhaungpan
+    3300006: liantiao
+    3300008: liantuo
+    3300010: ManetaSt001
+    3300012: ManetaSt002
+    3300014: ManetaVitezeDr
+    3300016: ManetaVitezeDr001
+    3300018: Mesh006
+    3300020: Mesh05
+    3300022: Object033
+    3300024: Object035
+    3300026: Pedale
+    3300028: ProtectieManDr
+    3300030: ProtectieManDr001
+    3300032: SurubSus001
+    4300000: ManetaSt001
+    4300002: SurubSus001
+    4300004: 237
+    4300006: ProtectieManDr
+    4300008: ManetaVitezeDr
+    4300010: houzhaungpan
+    4300012: Pedale
+    4300014: AxPedalier
+    4300016: Object035
+    4300018: Object033
+    4300020: liantiao
+    4300022: ProtectieManDr001
+    4300024: ManetaVitezeDr001
+    4300026: ManetaSt002
+    4300028: Mesh006
+    4300030: liantuo
+    4300032: Mesh05
+    4300034: sportive10_m_mediumpoly
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: sportive10_m_mediumpoly
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: 237
+        weight: 1
+      - path: AxGhidon
+        weight: 1
+      - path: Bip027
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 L Thigh026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 L Thigh026/Bip01 L Calf026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 L Thigh026/Bip01 L Calf026/Bip01
+          L Foot026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 L Thigh026/Bip01 L Calf026/Bip01
+          L Foot026/Bip01 L Toe026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 L Thigh026/Bip01 L Calf026/Bip01
+          L Foot026/Bip01 L Toe026/Bip01 L Toe0Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 R Thigh026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 R Thigh026/Bip01 R Calf026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 R Thigh026/Bip01 R Calf026/Bip01
+          R Foot026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 R Thigh026/Bip01 R Calf026/Bip01
+          R Foot026/Bip01 R Toe026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 R Thigh026/Bip01 R Calf026/Bip01
+          R Foot026/Bip01 R Toe026/Bip01 R Toe0Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          Head026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          Head026/Bip01 HeadNub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger172
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger172/Bip01 L Finger173
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger172/Bip01 L Finger173/Bip01 L Finger0Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger174
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger174/Bip01 L Finger175
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger174/Bip01 L Finger175/Bip01 L Finger1Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger176
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger176/Bip01 L Finger177
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          L Clavicle026/Bip01 L UpperArm026/Bip01 L Forearm026/Bip01 L Hand026/Bip01
+          L Finger176/Bip01 L Finger177/Bip01 L Finger2Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger172
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger172/Bip01 R Finger173
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger172/Bip01 R Finger173/Bip01 R Finger0Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger174
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger174/Bip01 R Finger175
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger174/Bip01 R Finger175/Bip01 R Finger1Nub026
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger176
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger176/Bip01 R Finger177
+        weight: 1
+      - path: Bip027/Bip01 Pelvis026/Bip01 Spine052/Bip01 Spine053/Bip01 Neck026/Bip01
+          R Clavicle026/Bip01 R UpperArm026/Bip01 R Forearm026/Bip01 R Hand026/Bip01
+          R Finger176/Bip01 R Finger177/Bip01 R Finger2Nub026
+        weight: 1
+      - path: houzhaungpan
+        weight: 1
+      - path: liantiao
+        weight: 1
+      - path: liantuo
+        weight: 1
+      - path: ManetaSt001
+        weight: 1
+      - path: ManetaSt002
+        weight: 1
+      - path: ManetaVitezeDr
+        weight: 1
+      - path: ManetaVitezeDr001
+        weight: 1
+      - path: Mesh05
+        weight: 1
+      - path: Mesh006
+        weight: 1
+      - path: Pedale
+        weight: 1
+      - path: Pedale/AxPedalier
+        weight: 1
+      - path: Pedale/Object033
+        weight: 1
+      - path: Pedale/Object035
+        weight: 1
+      - path: ProtectieManDr
+        weight: 1
+      - path: ProtectieManDr001
+        weight: 1
+      - path: sportive10_m_mediumpoly
+        weight: 1
+      - path: SurubSus001
+        weight: 1
+      - path: tuxing
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
