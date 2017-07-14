@@ -47,7 +47,7 @@ public class MainPlayer : RoleBase
     /// </summary>
     public override void Move()
     {
-        pos=new Vector3(transform.position.x, transform.position.y, transform.position.z+252*frequency);
+        pos=transform.position+new Vector3(0,0,252*frequency);
         if (Recovery.GameData.Instance.isPlayGame)
         {
             if (!Recovery.GameData.Instance.isStopGame)

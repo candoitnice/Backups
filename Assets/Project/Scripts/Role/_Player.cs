@@ -58,5 +58,14 @@ public class _Player : RoleBase
         return base.Direction(trans, trans2, direction);
     }
 
- 
+    public void SetPos()
+    {
+        if (Recovery.GameData.Instance.mainPlayer.frequency <= 0)
+            transform.position = pos;
+        else
+        {
+            transform.position = pos - new Vector3(0, 0, 252 * Recovery.GameData.Instance.mainPlayer.frequency);
+        }
+    }
+
 }

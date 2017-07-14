@@ -96,7 +96,8 @@ namespace Recovery
                     role.distance = GDP.bike.distance;
                     role.speedmax = GDP.bike.speedmax;
 
-                    role.SetPos();
+                    if(role is _Player)
+                    (role as _Player).SetPos();
 
                     GameManager.instance.queue.Enqueue("GDAT");
                 }

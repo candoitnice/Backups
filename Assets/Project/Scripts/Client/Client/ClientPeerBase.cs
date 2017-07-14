@@ -76,7 +76,7 @@ namespace SportClient
         {
             while (isRunning)
             {
-                Thread.Sleep(50);
+                Thread.Sleep(30);
                 if (Recovery.GameData.Instance.GDP_Bike != null)
                 {
                     Parameter p = new Parameter();
