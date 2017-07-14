@@ -70,7 +70,6 @@ public class Main : MonoBehaviour
     {
         //pr.Kill();
         MySocket.Instance.close();
-        MyClient.Instance.close();
         Recovery.InfoHandle.Instance.CloseEvent();
         EventManager.Instance.onGameUpdate -= GameManager.instance.QueuePlay;
         EventManager.Instance._OnApplicationQuit();
