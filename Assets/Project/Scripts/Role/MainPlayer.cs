@@ -12,8 +12,9 @@ public class MainPlayer : RoleBase
     {
         base.Start();
         target = transform.FindChild("target");
+
     }
- 
+
     public override void Update()
     {
         base.Update();
@@ -31,125 +32,97 @@ public class MainPlayer : RoleBase
     /// <param name="_name"></param>
     /// <param name="sex"></param>
     /// <param name="age"></param>
-    public override void InitData(Vector3 pos, string Name = "player", string ID = "0", bool isMainPlay = false, string no = "111111111", string _name = "ZS", string sex = "30", string age = "M")
+    public override void InitData(bool isConnect = true, Vector3 pos = default(Vector3), string Name = "player", string ID = "0", bool isMainPlay = false, string no = "111111111", string _name = "ZS", string sex = "30", string age = "M")
     {
-        base.InitData(pos, Name, ID, isMainPlay, no, _name, sex, age);
+        base.InitData(isConnect, pos, Name, ID, isMainPlay, no, _name, sex, age);
+    }
+    public override void SetInfo(float speed, float slope, float heartRate, float L_symmetry, float balloonCapacity)
+    {
+        base.SetInfo(speed, slope, heartRate, L_symmetry, balloonCapacity);
+        this.balloonCapacity += balloonCapacity;
+        distance += balloonCapacity;
     }
 
-    private Vector3 vecpos;
 
+    public List<GameObject> cloneBalute = new List<GameObject>();
     internal Transform target;
 
-    public int frequency;
 
+    public override void Zoom()
+    {
+        base.Zoom();
+        if (c >= 1)
+        {
+            GameObject cb = Recovery.GameManager.instance.EstablishProp("Prefabs/Ballute/" + _ballut.sprite.name);
+            GameObject g = Recovery.GameManager.instance.EstablishProp(Source.Effect.blast, ballut.transform.position);
+            Destroy(g, 3);
+            cb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            cb.transform.position = _ballut.transform.position;
+            cb.transform.eulerAngles = _ballut.transform.eulerAngles;
+            balloonCapacity = 0f;
+            ballut.localScale = Vector3.zero;
+            balluteCount++;
+
+            cloneBalute.Add(cb);
+
+            c = 0;
+            cb.AddComponent<BalluteMove>();
+
+            nowCount++;
+            if (nowCount >= BalluteSpriteArray.Instance.greenSprite.Length)
+                nowCount = 0;
+            if (UsedCount < Recovery.GameData.Instance.allBall.Count)
+            {
+                if (Recovery.GameData.Instance.allBall[UsedCount].count == balluteCount)
+                {
+                    Debug.Log(Recovery.GameData.Instance.Number + " ==> " + balluteCount);
+
+                    _ballut.sprite = Recovery.GameManager.instance.GetSprite(nowCount, Recovery.GameData.Instance.allBall[UsedCount].balluteType);
+                    UsedCount++;
+                }
+                else
+                {
+                    _ballut.sprite = Recovery.GameManager.instance.GetSprite(nowCount);
+                }
+            }
+            else
+            {
+                _ballut.sprite = Recovery.GameManager.instance.GetSprite(nowCount);
+            }
+
+        }
+    }
     /// <summary>
     /// 移动
     /// </summary>
     public override void Move()
     {
-        pos=transform.position+new Vector3(0,0,252*frequency);
+
+        pos = transform.position;
         if (Recovery.GameData.Instance.isPlayGame)
         {
             if (!Recovery.GameData.Instance.isStopGame)
             {
-                Raycast();
+                Zoom();
                 base.Move();
             }
             else
-                anim.speed = 0f; if (isMainPlay)
-            {
-                if (transform.position.z > 252)
-                {
-                    frequency++;
-                    for (int i = 0; i < Recovery.GameData.Instance.Dic_RoleCount.Count; i++)
-                    {
-                        Vector3 v3 = Recovery.GameData.Instance.Dic_RoleCount.ElementAt(i).Value.transform.position;
-                        Recovery.GameData.Instance.Dic_RoleCount.ElementAt(i).Value.transform.position = new Vector3(v3.x, v3.y, v3.z - 252);
-                        Camera.main.GetComponent<CameraFlow>().SetPos();
-                    }
-                    for (int i = 0; i < Recovery.GameData.Instance.allSlope.Count; i++)
-                    {
-                        Vector3 v3 = Recovery.GameData.Instance.allSlope[i].transform.position;
-                        Recovery.GameData.Instance.allSlope[i].transform.position = new Vector3(v3.x, v3.y, v3.z - 252);
-                    }
-                }
-            }
-            transform.forward = Direction(new Vector3(transform.position.x, transform.position.y + 1 * 5f, transform.position.z),
-                new Vector3(transform.position.x, transform.position.y + 1 * 5f, transform.position.z - 1 * 5f), -Vector3.up);
-
-            vecpos = transform.position;
-        }
-        else
-        {
-            motorSpeed = 0;
+                GetComponentInChildren<Animator>().speed = 0f;
         }
 
-       
-    }
-    /// <summary>
-    /// 方向
-    /// </summary>
-    /// <param name="trans"></param>
-    /// <param name="trans2"></param>
-    /// <param name="direction"></param>
-    /// <returns></returns>
-    public override Vector3 Direction(Vector3 trans, Vector3 trans2, Vector3 direction)
-    {
-        return base.Direction(trans, trans2, direction);
-    }
-    public void Raycast()
-    {
-        Ray ray = new Ray(transform.position+new Vector3(0,2,0), -transform.up);
-        RaycastHit hit;
-        int i = 0;
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
-            switch (hit.collider.tag)
-            {
-                case "slope":
-                    i = 0;
-                    break;
-                case "slope15":
-                    i = 1;
-                    break;
-                case "_slope15":
-                    i = 2;
-                    break;
-                case "slope30":
-                    i = 3;
-                    break;
-                case "_slope30":
-                    i = 4;
-                    break;
-                case "slope45":
-                    i = 5;
-                    break;
-                case "_slope45":
-                    i = 6;
-                    break;
-            }
-            if (i!= Recovery.GameData.Instance.slopeCount)
-            {
-                Recovery.GameData.Instance.slopeCount = i;
-                print(Recovery.GameData.Instance.slopeCount);
-
-                for (int j = 0; j< 5; j++)
-                {
-                    MySocket.Instance.listSendValue.Add("CTL:" + Recovery.GameData.Instance.Number +":"+ Recovery.GameData.Instance.slopeCount+";");
-                }
-            }
-        }
     }
     /// <summary>
     ///重新游戏
     /// </summary>
     public void GameAgain()
     {
-        transform.position = Vector3.zero;
-        Camera.main.GetComponent<CameraFlow>().SetPos();
-        Camera.main.GetComponent<CameraFlow>().GameAgain ();
-        distance = 0;
-        Recovery.GameData.Instance.distance = 0;
+        transform.position = new Vector3(0, -3.5f, 0);
+        base.AgainGame();
+        for (int i = 0; i < cloneBalute.Count; i++)
+        {
+            if (cloneBalute[i] != null)
+                Destroy(cloneBalute[i]);
+        }
+        cloneBalute.Clear();
     }
 }

@@ -25,6 +25,9 @@ namespace Assets.Project.Scripts.Client
             switch (subcode)
             {
                 case SubCode.GameType:
+                    UIUpdateManaget.Instance.GameExecutingNotice.gameObject.SetActive(true);
+                    Recovery.GameData.Instance.isGameAgain = true;
+                    UIUpdateManaget.Instance.GameExecutingNotice.OnPlay();
                     //Debug.Log(ParameterTool.GetParmerer<GameType>(Parma.Parameters, subcode));
                     break;
             }

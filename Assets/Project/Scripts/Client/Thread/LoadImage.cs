@@ -17,7 +17,7 @@ public class LoadImage
             ar.data = data;
             ar.send = image;
             ar.callback = callback;
-            ThreadsPool.Instance.dataQueue.Enqueue(ar);
+            //ThreadsPool.Instance.dataQueue.Enqueue(ar);
         }).Start();
     }
 }

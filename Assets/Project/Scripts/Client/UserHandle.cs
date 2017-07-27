@@ -25,7 +25,7 @@ namespace Sport
             {
                 case SubCode.ZC:
                     //Debug.Log(ParameterTool.GetParmerer<BikeZCInfo>(dic.Parameters, subcode));
-                    EventManager.Instance._OnGameZCData(ParameterTool.GetParmerer<BikeZCInfo>(dic.Parameters, SubCode.ZC));
+                    EventManager.Instance._OnGameZCData(ParameterTool.GetParmerer<List<BikeZCInfo>>(dic.Parameters, SubCode.ZC));
                     break;
             }
         }

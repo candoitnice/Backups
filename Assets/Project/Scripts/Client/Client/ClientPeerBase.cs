@@ -22,19 +22,14 @@ namespace SportClient
         public ConnectState state = ConnectState.Close;
         public Thread OnSendMsgThread { get; private set; }
         public Thread OnSendGDataThread { get; private set; }
-
-        ThreadsPool pool;
+        public Queue<Parameter> OnInData = new Queue<Parameter>();
+        //ThreadsPool pool;
         public ClientPeerBase(IPEndPoint ip, IClient client)
         {
-            pool = ThreadsPool.Instance;
+            // pool = ThreadsPool.Instance;
             isRunning = true;
             this.ip = ip;
             this.client = client;
-
-            OnSendMsgThread = new Thread(new ThreadStart(OnSendPData));
-            OnSendMsgThread.Start();
-            //OnSendGDataThread = new Thread(new ThreadStart(OnSendGData));
-            //OnSendGDataThread.Start();
 
             OnThreadStart(OnRevicveMsgThread, OnReciveData);
         }
@@ -69,23 +64,6 @@ namespace SportClient
                         Console.WriteLine(ex.Message);
                         OnDisconnect();
                     }
-                }
-            }
-        }
-        public void OnSendGData()
-        {
-            while (isRunning)
-            {
-                Thread.Sleep(30);
-                if (Recovery.GameData.Instance.GDP_Bike != null)
-                {
-                    Parameter p = new Parameter();
-                    p.OperaCode = (byte)Operation.GameSyn;
-                    p.Parameters = new Dictionary<byte, object>();
-                    ParameterTool.AddParmerer(p.Parameters, PameraCode.SubCode, SubCode.GDATA);
-                    ParameterTool.AddParmerer(p.Parameters, SubCode.GDATA, Recovery.GameData.Instance.GDP_Bike);
-                    lock (MsgQueue.mQueue)
-                        MsgQueue.mQueue.Enqueue(p);
                 }
             }
         }
@@ -138,11 +116,15 @@ namespace SportClient
                                     Parameter p = SerializeTool.DeserializeParam(stream.ToArray());
                                     if (p != null)
                                     {
-                                        ArgmentParam ar = new ArgmentParam();
-                                        ar.param = p;
-                                        ar.client = this.client;
+                                        lock (OnInData)
+                                        {
+                                            OnInData.Enqueue(p);
+                                        }
+                                        //ArgmentParam ar = new ArgmentParam();
+                                        //ar.param = p;
+                                        //ar.client = this.client;
 
-                                        ThreadsPool.Instance.queue.Enqueue(ar);
+                                        //ThreadsPool.Instance.queue.Enqueue(ar);
                                     }
                                 }
                                 catch (Exception e)
@@ -195,16 +177,60 @@ namespace SportClient
             //}
         }
 
+        private void Send(Parameter param)
+        {
+
+            if (tcpClient != null)
+            {
+                try
+                {
+                    if (tcpClient.Client == null) return;
+                    byte[] buff = SerializeTool.SerializeParam(param);
+                    byte[] length = new byte[4];
+                    int len = buff.Length;
+                    length[0] = (byte)(len >> 24);
+                    length[1] = (byte)(len >> 16);
+                    length[2] = (byte)(len >> 8);
+                    length[3] = (byte)(len);
+                    tcpClient.Client.Send(length);
+                    tcpClient.Client.Send(buff);
+                }
+                catch (Exception ex)
+                {
+                    Debug.Log(ex.Message);
+                    OnDisconnect();
+                }
+            }
+        }
+
+        public void Service()
+        {
+            while (OnInData.Count > 0)
+            {
+                if (client != null)
+                {
+                    client.OnRecivedData(OnInData.Dequeue());
+                }
+            }
+            while (MsgQueue.mQueue.Count > 0)
+            {
+                Send(MsgQueue.mQueue.Dequeue());
+            }
+
+        }
+
 
         public void OnDisconnect()
         {
             if (tcpClient != null) tcpClient.Close();
             tcpClient = null;
+            OnClientClose();
         }
 
         private void CloseTcp()
         {
-            tcpClient.Close();
+            if (tcpClient != null)
+                tcpClient.Close();
 
             state = ConnectState.Closing;
             client.OnConnectStateChange(state);
@@ -244,7 +270,7 @@ namespace SportClient
             OnThreadAbort(OnSendMsgThread);
             OnThreadAbort(OnSendGDataThread);
             client.OnConnectStateChange(state);
-            GameManager.instance.queue.Enqueue("CloentClose");
+            Recovery.GameManager.instance.queue.Enqueue("CloentClose");
         }
 
         void OnThreadAbort(Thread thread)
@@ -267,6 +293,8 @@ namespace SportClient
             thread = null;
             thread = new Thread(new ThreadStart(action));
             thread.Start();
+            thread.IsBackground = true;
+            thread.Priority = System.Threading.ThreadPriority.Highest;
             thread.IsBackground = true;
         }
     }

@@ -62,13 +62,14 @@ public class MySocket
     {
         try
         {
-            ip = GetIPv4.GetLocalIP();
-            if (ip.Substring(0, 3) == "192" || ip.Substring(0, 3) == "127")
-            {
-            }
-            else
-                ip = "127.0.0.1";
+            //ip = GetIPv4.GetLocalIP();
+            //if (ip.Substring(0, 3) == "192" || ip.Substring(0, 3) == "127")
+            //{
+            //}
+            //else
+            //    ip = "127.0.0.1";
 
+            Debug.Log(ip);
             IPAddress ipa = IPAddress.Parse(ip);
             IPEndPoint ipe = new IPEndPoint(ipa,int.Parse(port));
             serverSocket = new TcpListener(ipa,int.Parse(port));

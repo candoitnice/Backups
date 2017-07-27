@@ -112,10 +112,18 @@ using UnityEngine;
         ///距离
         /// </summary>
         public float distance = 0;
-        /// <summary>
-        ///时速
-        /// </summary>
-        public float speedmax=0;
+
+    /// <summary>
+    ///距离
+    /// </summary>
+    public int balluteCount = 0;
+    /// <summary>
+    ///时速
+    /// </summary>
+    public float speedmax=0;
+
+    public float balloonCapacity;
+    public int nowCount;
 }
 
 
@@ -137,8 +145,8 @@ using UnityEngine;
         public string name = " 张三甲";
         public string age = " 30";
         public string sex = "M";
-        public string gameid = " bike";
-        public string gamename = " 骑单车训练";
+        public string gameid = "balloon";
+        public string gamename = "打气球训练";
         public string date = "2017-04-01 08=00";
         public string mode = "主动模式";
         public string level = "中等";
@@ -182,18 +190,27 @@ using UnityEngine;
 
 
 
-    /// <summary>
-    /// 设置数据
-    /// </summary>
-    public class SetGame
-    {
-        //{"自行车通讯":{"IP": "自动获取(不用填)","端口": "9000"},"服务器通讯":{"IP":"192.168.0.145","端口":"6000"},"主机编号":"0001"}
-        public Bike 自行车通讯 = new Bike();
-        public Bike 服务器通讯 = new Bike();
-        //public string 主机编号 ="0001";
-    }
-    public class Bike
-    {
-        public string IP = "127.0.0.1";
-        public string 端口 = "9000";
-    }
+
+/// <summary>
+/// 设置数据
+/// </summary>
+public class SetGame
+{
+    //{"训练机通讯":{"IP":"192.168.0.147","端口":"9000"},"联机通讯服务器":{"IP":"192.168.0.147","端口":"6000"},"是否主机":false}
+    public bool 是否主机 = false;
+    public string GameName = "康复游戏";
+    public Bike 训练机通讯 = new Bike();
+    public Bike 联机通讯服务器 = new Bike();
+    public Platform 平台 = new Platform();
+    //public string 主机编号 ="0001";
+}
+public class Bike
+{
+    public string IP = "127.0.0.1";
+    public string 端口 = "9000";
+}
+public class Platform
+{
+    public string Get = "http://127.0.0.1:8080/api/game/start";
+    public string Set = "http://127.0.0.1:8080/api/game/end";
+}

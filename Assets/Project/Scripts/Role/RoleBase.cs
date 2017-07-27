@@ -5,12 +5,22 @@ using UnityEngine.UI;
 
 public class RoleBase : MonoBehaviour
 {
+
+    public bool isConnect;
     /// <summary>
     /// 排行
     /// </summary>
-    public int Ranking=4;
+    public int Ranking = 4;
 
     public Text RankingText;
+
+    public Transform ballut;
+    public SpriteRenderer _ballut;
+    //气管
+    public Transform tube;
+    public float balloonCapacity;
+    public float MaxBalloonCapacity;
+    public Canvas canvas;
 
     /// <summary>
     /// 是否主要玩家
@@ -51,7 +61,7 @@ public class RoleBase : MonoBehaviour
     /// <summary>
     ///对称性(左%, 右%)
     /// </summary>
-    public float L_symmetry=50; 
+    public float L_symmetry = 50;
     /// <summary>
     /// 病历号
     /// </summary>
@@ -71,21 +81,44 @@ public class RoleBase : MonoBehaviour
 
     public Vector3 pos;
 
-    private GameObject car;
+    //private GameObject car;
 
     public Animator anim;
 
+    public int nowCount;
+
+    public bool isStopAnim = false;
+
+
+
+    public static RoleBase instance;
+    void Awake()
+    {
+        instance = this;
+        canvas = gameObject.GetComponentInChildren<Canvas>();
+        canvas.enabled = false;
+        anim = GetComponentInChildren<Animator>();
+        anim.speed = 0.001f;
+    }
+
+
+
     public virtual void Start()
     {
-        car = transform.FindChild("GameObject").gameObject;
-        anim=GetComponentInChildren<Animator>();
-        anim.speed = 0.001f;
         L_symmetry = 50;
-        RankingText = GetComponentInChildren<Text>();
-        if (Recovery.GameData.Instance.gameModeType == Recovery.Type.GameModeType.many)
-            GetComponentInChildren<Canvas>().gameObject.SetActive(true);
-        else
-            GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        Transform[] sr = GetComponentsInChildren<Transform>();
+        for (int i = 0; i < sr.Length; i++)
+        {
+            if (sr[i].name == "balloon")
+                ballut = sr[i];
+            if (sr[i].name == "_balloon")
+                _ballut = sr[i].GetComponent<SpriteRenderer>();
+            if (sr[i].name == "tube")
+                tube = sr[i];
+        }
+        MaxBalloonCapacity = (0.08f * 2 * 3.1415f) * 5;
+        balloonCapacity = MaxBalloonCapacity;
+
     }
     public virtual void Update()
     {
@@ -98,57 +131,65 @@ public class RoleBase : MonoBehaviour
     /// <param name="Name"></param>
     /// <param name="ID"></param>
     /// <param name="isMainPlay"></param>
-    public virtual void InitData(Vector3 pos, string Name = "player", string ID = "0", bool isMainPlay = false,
-        string no="111111111",string _name="ZS",string sex="30",string age="M")
+    public virtual void InitData(bool isConnect = true, Vector3 pos = default(Vector3), string Name = "player", string ID = "0", bool isMainPlay = false,
+        string no = "111111111", string _name = "ZS", string sex = "30", string age = "M")
     {
+        this.isConnect = isConnect;
         transform.position = pos;
         name = Name;
         this.number = ID;
         this.isMainPlay = isMainPlay;
-        if (number==Recovery.GameData.Instance.Number)
+        if (number == Recovery.GameData.Instance.Number)
         {
             Recovery.GameData.Instance.mainPlayer = this as MainPlayer;
             this.isMainPlay = true;
         }
         this.no = no;
-        this._name =_name;
-        this.sex =sex;
-        this.age=age;
+        this._name = _name;
+        this.sex = sex;
+        this.age = age;
+    }
+
+
+    public virtual void SetInfo(float speed, float slope, float heartRate, float L_symmetry, float balloonCapacity)
+    {
+        motorSpeed = speed;
+        this.slope = slope;
+        this.heartRate = heartRate;
+        this.L_symmetry = L_symmetry;
+    }
+
+    public int balluteCount;
+
+    public float c;
+    public float b;
+    //GameObject cloneBalute;
+
+    public int UsedCount;
+    public virtual void Zoom()
+    {
+        c = balloonCapacity / MaxBalloonCapacity;
+        ballut.localScale = Vector3.Lerp(ballut.localScale, new Vector3(c, c, c), Time.deltaTime * 3);
+
     }
     /// <summary>
     /// 移动方法
     /// </summary>
     public virtual void Move()
     {
-        Vector3 vecpos = transform.position + transform.forward * Time.deltaTime * moveSpeed * 0.05f;
-        transform.position= vecpos;
-        
-            if (moveSpeed * 0.5f * 0.05f <= 1.2f)
-            anim.speed = moveSpeed * 0.5f * 0.05f;
-            else
-            anim.speed = 1.2f;
-
-
-        if (Recovery.GameData.Instance.gameModeType != Recovery.Type.GameModeType.many)
+        if (isStopAnim)
+            return;
+        if (isConnect)
         {
-            if ((L_symmetry - 50 != 0))
+            if (moveSpeed * 0.5f * 0.05f <= 1.2f)
+                anim.speed = moveSpeed * 0.5f * 0.05f;
+            else
+                anim.speed = 1.2f;
+            if (Recovery.GameData.Instance.gameModeType != Recovery.Type.GameModeType.many)
             {
-                transform.Translate(transform.right * ((L_symmetry - 50) * 0.01f) * Time.deltaTime);
                 SetPutACar(L_symmetry - 50);
             }
-            if (transform.position.x > 1.6f)
-            {
-                transform.Translate(-transform.right * ((L_symmetry - 50) * 0.01f) * Time.deltaTime);
-                SetPutACar(0);
-            }
-            if (transform.position.x < -1.6f)
-            {
-                transform.Translate(-transform.right * ((L_symmetry - 50) * 0.01f) * Time.deltaTime);
-                SetPutACar(0);
-            }
         }
-        else
-             RankingText.text = "第" + Ranking + "名";
     }
 
     /// <summary>
@@ -157,43 +198,41 @@ public class RoleBase : MonoBehaviour
     public void SetPutACar(float Angle)
     {
         if (Angle < 15)
-            car.transform.localEulerAngles = Vector3.Lerp(car.transform.localEulerAngles, new Vector3(0, 0, 90 - Angle), Time.deltaTime * 3);
+            tube.transform.localEulerAngles = Vector3.Lerp(tube.transform.localEulerAngles, new Vector3(0, 0, 90 - Angle), Time.deltaTime * 3);
         else
-            car.transform.localEulerAngles = Vector3.Lerp(car.transform.localEulerAngles, new Vector3(0, 0, 90 - 15), Time.deltaTime * 3);
+            tube.transform.localEulerAngles = Vector3.Lerp(tube.transform.localEulerAngles, new Vector3(0, 0, 90 - 15), Time.deltaTime * 3);
         if (Angle > -15)
-            car.transform.localEulerAngles = Vector3.Lerp(car.transform.localEulerAngles, new Vector3(0, 0, 90 - Angle), Time.deltaTime * 3);
+            tube.transform.localEulerAngles = Vector3.Lerp(tube.transform.localEulerAngles, new Vector3(0, 0, 90 - Angle), Time.deltaTime * 3);
         else
-            car.transform.localEulerAngles = Vector3.Lerp(car.transform.localEulerAngles, new Vector3(0, 0, 90 - -15), Time.deltaTime * 3);
+            tube.transform.localEulerAngles = Vector3.Lerp(tube.transform.localEulerAngles, new Vector3(0, 0, 90 - -15), Time.deltaTime * 3);
     }
 
 
-    /// <summary>
-    ///定义一个位置发出射线得到碰撞数据
-    /// </summary>
-    public virtual RaycastHit Raycast(Vector3 trans, Vector3 direction)
+
+    public void Off_line()
     {
-        Ray ray = new Ray(trans, direction);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.DrawLine(ray.origin, hit.point, Color.red);
-            return hit;
-        }
-        else
-            return hit;
+        //RankingText.text = "已离线";
+        //RankingText.color = Color.red;
+        Ranking = 4;
+        isConnect = false;
+        anim.speed = 0.001f;
+        motorSpeed = 0;
+        distance = 0;
+
+        Recovery.GameData.Instance.offDic_RoleCount.Add(this);
+        //if (Recovery.GameData.Instance.Dic_RoleCount.ContainsKey(number))
+        //    Recovery.GameData.Instance.Dic_RoleCount.Remove(number);
+        //number = null;
     }
-    /// <summary>
-    /// 得到两个位置射线碰到地面的方向
-    /// </summary>
-    /// <param name="trans"></param>
-    /// <param name="trans2"></param>
-    /// <param name="direction"></param>
-    /// <returns></returns>
-    public virtual Vector3 Direction(Vector3 trans, Vector3 trans2, Vector3 direction)
+
+
+
+    public virtual void AgainGame()
     {
-        Vector3 vec = Raycast(trans, direction).point;
-        Vector3 vec2 = Raycast(trans2, direction).point;
-        transform.position = Vector3.Slerp(transform.position, vec, Time.deltaTime*10f);
-        return vec - vec2;
+        distance = 0;
+        balluteCount = 0;
+        ballut.localScale = Vector3.zero;
+        balloonCapacity = 0;
+        Recovery.GameData.Instance.distance = 0;
     }
 }

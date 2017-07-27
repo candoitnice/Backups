@@ -1,0 +1,99 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c82)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   21.21.13.7878
+Begin MonoManager ReloadAssembly
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\Newtonsoft.Json.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\Newtonsoft.Json.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\SportCommon.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\SportCommon.dll into Unity Child Domain
+- Completed reload, in  0.036 seconds
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.177608 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 3774 -> priority: 1 
+  Thread -> id: 3568 -> priority: 1 
+{"是否主机":false,"GameName":"康复游戏","训练机通讯":{"IP":"192.168.0.241","端口":"7000"},"联机通讯服务器":{"IP":"192.168.0.241","端口":"6000"},"平台":{"Get":"http://127.0.0.1:8080/api/game/start?id=C_Balloon","Set":"http://127.0.0.1:8080/api/game/end"}}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\System.Data.dll (this message is harmless)
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame_C\3\BalluteGame_Data\Managed\System.Xml.dll (this message is harmless)
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1145.
+Total: 1.265755 ms (FindLiveObjects: 0.089656 ms CreateObjectMapping: 0.047997 ms MarkObjects: 1.118139 ms  DeleteObjects: 0.009659 ms)
+
+{"no":"201701010001","name":"张三甲","age":30,"sex":"M","config":[{"id":"time","name":"时间","value":"1"},{"id":"mode","name":"模式","value":"2"},{"id":"level","name":"难度","value":"2"}]}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Fallback handler could not load library F:/Project/3DProject/RecoveryTrain/Bike_01/BalluteGame_C/3/BalluteGame_Data/Mono/libc
+Fallback handler could not load library F:/Project/3DProject/RecoveryTrain/Bike_01/BalluteGame_C/3/BalluteGame_Data/Mono/.\libc
+Fallback handler could not load library F:/Project/3DProject/RecoveryTrain/Bike_01/BalluteGame_C/3/BalluteGame_Data/Mono/libc
+192.168.0.241
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+开启服务器192.168.0.241:7000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 1145.
+Total: 1.339412 ms (FindLiveObjects: 0.096599 ms CreateObjectMapping: 0.049809 ms MarkObjects: 1.188475 ms  DeleteObjects: 0.003924 ms)
+
+192.168.0.241:5718
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+CLR:0003:1:2;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2017-7-27 11:59
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+远程主机强迫关闭了一个现有的连接。
+
+退出
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+关闭线程
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+关闭客户端
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+System.Collections.Hashtable
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+关闭客户端
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+

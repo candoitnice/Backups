@@ -24,6 +24,10 @@ namespace Recovery
         /// <summary>
         /// 所有玩家
         /// </summary>
+        public List<RoleBase> offDic_RoleCount = new List<RoleBase>();
+        /// <summary>
+        /// 所有玩家
+        /// </summary>
         public Dictionary<string, RoleBase> Dic_RoleCount = new Dictionary<string, RoleBase>();
         /// <summary>
         /// 主要的玩家
@@ -32,7 +36,8 @@ namespace Recovery
         /// <summary>
         /// 所有的坡
         /// </summary>
-        public List<GameObject> allSlope = new List<GameObject>();
+        public List<Ballute> allBall = new List<Ballute>();
+        //public List<GameObject> allBall = new List<GameObject>();
         /// <summary>
         /// 游戏时间
         /// </summary>
@@ -71,6 +76,8 @@ namespace Recovery
         public int slopeCount;
 
         public GameDataPacketBike GDP_Bike;
+
+        public bool isGameAgain = false;
         #endregion
 
         #region Json
@@ -90,6 +97,12 @@ namespace Recovery
         ///通讯服务器端口
         /// </summary>
         public string serverPort;
+        /// <summary>
+        ///是否主机
+        /// </summary>
+        public bool isHost;
+        public string getUrl;
+        public string setUrl;
         #endregion
 
         #region HTTP数据

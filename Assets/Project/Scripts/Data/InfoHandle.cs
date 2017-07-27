@@ -38,16 +38,20 @@ namespace Recovery
         }
 
 
+
         //断开连接
-        private void Instance_OnDisconnect(GameDataPacketBike value)
+        private void Instance_OnDisconnect(BikeZCInfo value)
         {
             try
             {
-                GameDataPacketBike GDP = value;
-
-                for (int i = 0; i < Recovery.GameData.Instance.Dic_RoleCount.Count; i++)
+                Debug.Log(value.numId);
+                if (Recovery.GameData.Instance.Dic_RoleCount.ContainsKey(value.numId))
                 {
-                    Recovery.GameData.Instance.Dic_RoleCount.ElementAt(i).Value.motorSpeed = 0;
+                    RoleBase role = Recovery.GameData.Instance.Dic_RoleCount[value.numId];
+                    role.Off_line();
+                    UIUpdateManaget.Instance.Disconnect(value.numId);
+                    Recovery.GameData.Instance.Dic_RoleCount.Remove(value.numId);
+                    Debug.Log(value.numId + "用户掉线");
                 }
             }
             catch (Exception ex)
@@ -56,6 +60,7 @@ namespace Recovery
             }
             GameManager.instance.queue.Enqueue("GDAT");
         }
+
         //游戏设置
         private void Instance_OnGameSET(HttpInfo value)
         {
@@ -88,6 +93,12 @@ namespace Recovery
                 if (Recovery.GameData.Instance.Dic_RoleCount.ContainsKey(GDP.bike.numId))
                 {
                     RoleBase role = Recovery.GameData.Instance.Dic_RoleCount[GDP.bike.numId];
+                    role.SetInfo(GDP.bike.speed, GDP.bike.deg, GDP.bike.heartBeat, GDP.bike.offset, GDP.bike.balloonCapacity);
+                    role.nowCount = GDP.bike.nowCount;
+                    //role.pos = GDP.Pos.GetValue();
+                    role.balluteCount = GDP.bike.balluteCount;
+                    //role.distance  = GDP.bike.distance;
+                    //role.speedmax = GDP.bike.speedmax;
                     role.motorSpeed = GDP.bike.speed;
                     role.slope = GDP.bike.deg;
                     role.heartRate = GDP.bike.heartBeat;
@@ -96,10 +107,6 @@ namespace Recovery
                     role.distance = GDP.bike.distance;
                     role.speedmax = GDP.bike.speedmax;
 
-                    if(role is _Player)
-                    (role as _Player).SetPos();
-
-                    GameManager.instance.queue.Enqueue("GDAT");
                 }
             }
             catch (Exception ex)
@@ -108,25 +115,28 @@ namespace Recovery
             }
         }
         //注册数据
-        private void Instance_onGameZCData(BikeZCInfo value)
+        private void Instance_onGameZCData(List<BikeZCInfo> value)
         {
             //Debug.Log("注册数据" + value.ToString());
             try
             {
-                BikeZCInfo bikeZC = value;
-
-                if (!Recovery.GameData.Instance.Dic_RoleCount.ContainsKey(bikeZC.numId))
+                for (int i = 0; i < value.Count; i++)
                 {
-                    GameManager.instance.queue.Enqueue(bikeZC);
-                }
-                else
-                {
-                    RoleBase role = Recovery.GameData.Instance.Dic_RoleCount[bikeZC.numId];
+                    BikeZCInfo bikeZC = value[i];
 
-                    role.no = bikeZC.no;
-                    role._name = bikeZC._name;
-                    role.age = bikeZC.age;
-                    role.sex = bikeZC.sex;
+                    if (!Recovery.GameData.Instance.Dic_RoleCount.ContainsKey(bikeZC.numId))
+                    {
+                        GameManager.instance.queue.Enqueue(bikeZC);
+                    }
+                    else
+                    {
+                        RoleBase role = Recovery.GameData.Instance.Dic_RoleCount[bikeZC.numId];
+
+                        role.no = bikeZC.no;
+                        role._name = bikeZC._name;
+                        role.age = bikeZC.age;
+                        role.sex = bikeZC.sex;
+                    }
                 }
             }
             catch (Exception ex)
@@ -139,7 +149,19 @@ namespace Recovery
         //状态数据
         private void Instance_OnCOD(string[] value)
         {
-            Debug.Log(value[1]);
+            Debug.Log(value[2]);
+            switch (value[2])
+            {
+                case "00":
+                    Recovery.GameManager.instance.queue.Enqueue("BikeClose");
+                    break;
+                case "01":
+                    Recovery.GameManager.instance.queue.Enqueue("BikeClose");
+                    break;
+                case "02":
+                    Recovery.GameManager.instance.queue.Enqueue("BikeClose");
+                    break;
+            }
         }
         //报告数据
         private void Instance_OnRPT(string[] value)
@@ -158,40 +180,81 @@ namespace Recovery
                 Recovery.GameData.Instance.speedavg = (Recovery.GameData.Instance.distance / (Recovery.GameData.Instance.currentGameTime / 60 / 60) / 1000).ToString();
                 Debug.Log("平均速度" + Recovery.GameData.Instance.speedavg + "公里/小时");
 
-                GameHttpInfoPacket Ghip = new GameHttpInfoPacket();
-                Ghip.bike.no = Recovery.GameData.Instance.no;
-                Ghip.bike.name = Recovery.GameData.Instance._name;
-                Ghip.bike.age = Recovery.GameData.Instance.age;
-                Ghip.bike.sex = Recovery.GameData.Instance.sex;
-                //Ghip.bike.gameid = GameData.Instance.gameid;
-                //Ghip.bike.gamename = GameData.Instance.gamename;
-                Ghip.bike.date = Recovery.GameData.Instance.date;
-                Ghip.bike.mode = Recovery.GameData.Instance.mode;
-                Ghip.bike.level = Recovery.GameData.Instance.level;
-                Ghip.bike.duration = Recovery.GameData.Instance.duration;
-                Ghip.bike.distance = Recovery.GameData.Instance.distance.ToString();
-                Ghip.bike.energy = Recovery.GameData.Instance.energy;
-                Ghip.bike.heartbeat = Recovery.GameData.Instance.heartbeat;
-                Ghip.bike.balance = Recovery.GameData.Instance.balance;
-                Ghip.bike.spasm = Recovery.GameData.Instance.speed;
-                Ghip.bike.tensionmax = Recovery.GameData.Instance.tensionmax;
-                Ghip.bike.tensionmin = Recovery.GameData.Instance.tensionmin;
-                Ghip.bike.tensionavg = Recovery.GameData.Instance.tensionavg;
-                Ghip.bike.speedmax = Recovery.GameData.Instance.speedmax;
-                Ghip.bike.speedmin = Recovery.GameData.Instance.speedmin;
-                Ghip.bike.speedavg = Recovery.GameData.Instance.speedavg;
-                Ghip.bike.speeddata = Recovery.GameData.Instance.speeddata;
-                Ghip.bike.angledata = Recovery.GameData.Instance.angledata;
+
+                HttpData hd = new HttpData();
+                hd.no = Recovery.GameData.Instance.no;
+                hd.name = Recovery.GameData.Instance._name;
+                hd.age = Recovery.GameData.Instance.age;
+                hd.sex = Recovery.GameData.Instance.sex;
+                hd.gameid = GameData.Instance.gameid;
+                hd.gamename = GameData.Instance.gamename;
+                hd.date = Recovery.GameData.Instance.date;
+                /*
+                 * 0=主动模式／1=被动模式／2=比赛模式
+                 * 0=简单／1=中等／2=困难
+                 */
+
+                switch (Recovery.GameData.Instance.mode)
+                {
+                    case "0":
+                        hd.mode = "主动模式";
+                        break;
+                    case "1":
+                        hd.mode = "被动模式";
+                        break;
+                    case "2":
+                        hd.mode = "比赛模式";
+                        break;
+                }
+                switch (Recovery.GameData.Instance.level)
+                {
+                    case "0":
+                        hd.level = "简单";
+                        break;
+                    case "1":
+                        hd.level = "中等";
+                        break;
+                    case "2":
+                        hd.level = "困难";
+                        break;
+                }
+
+                hd.duration = ((int)Recovery.GameData.Instance.currentGameTime).ToString();
+                hd.distance = Recovery.GameData.Instance.distance.ToString();
+                hd.energy = Recovery.GameData.Instance.energy;
+                hd.heartbeat = Recovery.GameData.Instance.heartbeat;
+                hd.balance = Recovery.GameData.Instance.balance;
+                hd.spasm = Recovery.GameData.Instance.speed;
+                hd.tensionmax = Recovery.GameData.Instance.tensionmax;
+                hd.tensionmin = Recovery.GameData.Instance.tensionmin;
+                hd.tensionavg = Recovery.GameData.Instance.tensionavg;
+                hd.speedmax = Recovery.GameData.Instance.speedmax;
+                hd.speedmin = Recovery.GameData.Instance.speedmin;
+                hd.speedavg = Recovery.GameData.Instance.speedavg;
+                hd.speeddata = Recovery.GameData.Instance.speeddata.Remove(GameData.Instance.speeddata.Length - 1);
+                hd.angledata = Recovery.GameData.Instance.angledata.Remove(GameData.Instance.angledata.Length - 1);
                 if (Recovery.GameData.Instance.GhipData == null)
                 {
-                    Recovery.GameData.Instance.GhipData = JsonConvert.SerializeObject(Ghip);
+                    Recovery.GameData.Instance.GhipData = JsonConvert.SerializeObject(hd);
                     GameManager.instance.queue.Enqueue("RPT");
                 }
-                //Debug.Log(str);
+                //Debug.Log(Recovery.GameData.Instance.GhipData);
             }
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
+            }
+
+            MySocket.Instance.listSendValue.Add("COD:" + value[1] + ":99;");
+            if (GameData.Instance.gameModeType == Type.GameModeType.many)
+            {
+                Parameter p = new Parameter();
+                p.OperaCode = (byte)Operation.GameSyn;
+                p.Parameters = new Dictionary<byte, object>();
+                ParameterTool.AddParmerer(p.Parameters, PameraCode.SubCode, SubCode.BDATA);
+                ParameterTool.AddParmerer(p.Parameters, SubCode.BDATA, GameData.Instance.GDP_Bike);
+                ClientEngine.Instance.OnSendParamer(p);
+                GameData.Instance.GDP_Bike = null;
             }
         }
         //训练数据
@@ -199,8 +262,8 @@ namespace Recovery
         {
             try
             {
-
-                Recovery.GameData.Instance.mainPlayer.distance += (0.08f * 2 * 3.1415f) * (float.Parse(value[2]) / 60 / 4);
+              
+                //Recovery.GameData.Instance.mainPlayer.distance += (0.08f * 2 * 3.1415f) * (float.Parse(value[2]) / 60 / 4);
                 Recovery.GameData.Instance.mainPlayer.speedmax = ((0.08f * 2 * 3.1415f) * float.Parse(value[2]) * 60 / 1000);
 
                 Recovery.GameData.Instance.mainPlayer.motorSpeed = float.Parse(value[2]);
@@ -216,18 +279,26 @@ namespace Recovery
                 GDP_Bike.bike.heartBeat = Recovery.GameData.Instance.mainPlayer.heartRate;
                 GDP_Bike.bike.offset = Recovery.GameData.Instance.mainPlayer.L_symmetry;
                 GDP_Bike.bike.distance = Recovery.GameData.Instance.mainPlayer.distance;
+                GDP_Bike.bike.balluteCount = Recovery.GameData.Instance.mainPlayer.balluteCount;
                 GDP_Bike.bike.speedmax = Recovery.GameData.Instance.mainPlayer.speedmax;
+                GDP_Bike.bike.balloonCapacity = Recovery.GameData.Instance.mainPlayer.balloonCapacity;
+                GDP_Bike.bike.nowCount= Recovery.GameData.Instance.mainPlayer.nowCount;
+
                 GameData.Instance.GDP_Bike = GDP_Bike;
-                
-                    GameManager.instance.queue.Enqueue("DAT");
+                GameData.Instance.mainPlayer.SetInfo(GDP_Bike.bike.speed, GDP_Bike.bike.deg, GDP_Bike.bike.heartBeat, GDP_Bike.bike.offset, (0.08f * 2 * 3.1415f) * (GDP_Bike.bike.speed / 60 / 4));
+
+                GameManager.instance.queue.Enqueue("DAT");
                 GetDat(value);
 
             }
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
-            }
+            }              
+            MySocket.Instance.listSendValue.Add("COD:" + value[1] + ":99;");
         }
+
+
         //注册数据
         private void Instance_OnREG(string[] value)
         {
@@ -239,6 +310,13 @@ namespace Recovery
                 {
                     MySocket.Instance.listSendValue.Add("COD:" + value[1] + ":02" + ";");
                 }
+                MySocket.Instance.listSendValue.Add("2");
+                for (int i = 0; i < 5; i++)
+                {
+                    MySocket.Instance.listSendValue.Add("CLR:" + value[1] + ":"+0+":"+int.Parse(GameData.Instance.mode)+":;");
+                }
+                Debug.Log("CLR:" + value[1] + ":1:" + GameData.Instance.mode + ";");
+
                 MySocket.Instance.listSendValue.Add("2");
 
                 BikeZCInfo bikeZC = new BikeZCInfo();
@@ -279,8 +357,9 @@ namespace Recovery
             {
                 Recovery.GameData.Instance.distance += (0.08f * 2 * 3.1415f) * (float.Parse(value[2]) / 60 / 4);
                 float speedmax = ((0.08f * 2 * 3.1415f) * float.Parse(value[2]) * 60 / 1000);
-                GetSpeedData(speedmax);
                 GetAngleData(float.Parse(value[3]));
+                GetSpeedData(speedmax);
+               
                 if (float.Parse(Recovery.GameData.Instance.speedmax) < speedmax)
                 {
                     Recovery.GameData.Instance.speedmax = speedmax.ToString();
@@ -294,18 +373,22 @@ namespace Recovery
             }
         }
 
+        float currentTime;
+        float count;
         List<float> listSpeedData = new List<float>();
         private void GetSpeedData(float value)
         {
             listSpeedData.Add(value);
-            if (listSpeedData.Count >= 30 * 4)
+            if ((int)GameData.Instance.currentGameTime >= currentTime && count < GameData.Instance.gameTime * 60)
             {
                 float _value = 0;
                 for (int i = 0; i < listSpeedData.Count; i++)
                 {
                     _value += listSpeedData[i];
                 }
-                Recovery.GameData.Instance.speeddata += ((_value / (30 * 4)).ToString("N2") + ",");
+                count++;
+                currentTime = (int)GameData.Instance.currentGameTime + 1f;
+                Recovery.GameData.Instance.speeddata += ((_value / listSpeedData.Count).ToString("N2") + ",");
                 //Debug.Log(GameData.Instance.speeddata);
                 listSpeedData.Clear();
             }
@@ -315,12 +398,27 @@ namespace Recovery
         private void GetAngleData(float value)
         {
             listAngleData.Add(value);
-            if (listAngleData.Count >= 30 * 4)
+            //Debug.Log(listAngleData.Count);
+
+            if ((int)GameData.Instance.currentGameTime >= currentTime && count < GameData.Instance.gameTime * 60)
             {
-                Recovery.GameData.Instance.angledata += (listAngleData[listAngleData.Count - 1].ToString() + ",");
+                Recovery.GameData.Instance.angledata += (listAngleData[listAngleData.Count - 1] + ",");
                 //Debug.Log(GameData.Instance.angledata);
                 listAngleData.Clear();
             }
+        }
+
+        public void InitGameData()
+        {
+            count = 0;
+            currentTime = 0;
+            Recovery.GameData.Instance.angledata = "";
+            Recovery.GameData.Instance.speeddata = "";
+            listAngleData.Clear();
+            listSpeedData.Clear();
+            Recovery.GameData.Instance.speedmax = "";
+            Recovery.GameData.Instance.speedmin = "";
+            Recovery.GameData.Instance.distance = 0;
         }
 
         //关闭事件

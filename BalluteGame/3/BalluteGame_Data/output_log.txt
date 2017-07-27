@@ -1,0 +1,240 @@
+Initialize engine version: 5.5.0f3 (38b4efef76f0)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c82)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   21.21.13.7878
+Begin MonoManager ReloadAssembly
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\Newtonsoft.Json.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\Newtonsoft.Json.dll into Unity Child Domain
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\SportCommon.dll (this message is harmless)
+Loading F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\SportCommon.dll into Unity Child Domain
+- Completed reload, in  0.029 seconds
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\System.dll (this message is harmless)
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 1.227115 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 3958 -> priority: 1 
+  Thread -> id: 2f60 -> priority: 1 
+{"是否主机":false,"GameName":"康复游戏","训练机通讯":{"IP":"192.168.0.241","端口":"7000"},"联机通讯服务器":{"IP":"192.168.0.241","端口":"6000"},"平台":{"Get":"http://127.0.0.1:8080/api/game/start?id=Balloon","Set":"http://127.0.0.1:8080/api/game/end"}}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\System.Data.dll (this message is harmless)
+Platform assembly: F:\Project\3DProject\RecoveryTrain\Bike_01\BalluteGame\3\BalluteGame_Data\Managed\System.Xml.dll (this message is harmless)
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 1136.
+Total: 1.372920 ms (FindLiveObjects: 0.131013 ms CreateObjectMapping: 0.052525 ms MarkObjects: 1.180929 ms  DeleteObjects: 0.007546 ms)
+
+{"no":"201701010001","name":"张三甲","age":30,"sex":"M","config":[{"id":"time","name":"时间","value":"5"},{"id":"mode","name":"模式","value":"2"},{"id":"level","name":"难度","value":"2"}]}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Fallback handler could not load library F:/Project/3DProject/RecoveryTrain/Bike_01/BalluteGame/3/BalluteGame_Data/Mono/libc
+Fallback handler could not load library F:/Project/3DProject/RecoveryTrain/Bike_01/BalluteGame/3/BalluteGame_Data/Mono/.\libc
+Fallback handler could not load library F:/Project/3DProject/RecoveryTrain/Bike_01/BalluteGame/3/BalluteGame_Data/Mono/libc
+192.168.0.241
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+开启服务器192.168.0.241:7000
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+
+Unloading 0 unused Assets to reduce memory usage. Loaded Objects now: 1136.
+Total: 1.196022 ms (FindLiveObjects: 0.092071 ms CreateObjectMapping: 0.042866 ms MarkObjects: 1.057462 ms  DeleteObjects: 0.003320 ms)
+
+192.168.0.241:2845
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+CLR:0003:1:2;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2017-7-27 19:27
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 28
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 29
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 30
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 ==> 28
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 31
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 ==> 29
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 28
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 ==> 30
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 29
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 ==> 31
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 30
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+0003 + _Player ==> 31
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+游戏结束
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+12
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+STP:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+STP:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+STP:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+STP:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+STP:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+END:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+END:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+END:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+END:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+END:0003;
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+平均速度1.801896公里/小时
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+23
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"no":"201701010001","name":"张三甲","age":"30","sex":"M","gameid":"Balloon","gamename":"康复游戏","date":"2017-7-27 19:27","mode":"比赛模式","level":"困难","duration":"300","distance":"150.1649","energy":"0","heartbeat":"60","balance":"50,50","spasm":"0","tensionmax":"0","tensionmin":"0","tensionavg":"0","speedmax":"1.809504","speedmin":"1.809504","speedavg":"1.801896","speeddata":"1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81,1.81","angledata":"0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,5,5,0,0,0,5,5,5,5,0,0,5,5,5,5,5,0,5,5,5,5,5,5,0,5,5,5,5,5,0,0,5,5,5,5,0,5,5,5,5,5,0,0,0,0,5,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+{"success":true}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+
+Unloading 247 unused Assets to reduce memory usage. Loaded Objects now: 1445.
+Total: 2.341330 ms (FindLiveObjects: 0.140069 ms CreateObjectMapping: 0.099920 ms MarkObjects: 1.934103 ms  DeleteObjects: 0.166634 ms)
+
+平均速度1.801896公里/小时
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+平均速度1.801896公里/小时
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+平均速度1.801896公里/小时
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+平均速度1.801896公里/小时
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+远程主机强迫关闭了一个现有的连接。
+
+退出
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+关闭线程
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+关闭客户端
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+System.Collections.Hashtable
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+关闭客户端
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+

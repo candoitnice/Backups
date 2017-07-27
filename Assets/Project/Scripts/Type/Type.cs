@@ -28,5 +28,17 @@ namespace Recovery
             children,
             Adult
         }
+        public enum GameBalluteType
+        {
+            green,
+            blue,
+            red,
+            violet
+        }
+        public enum MachineMode
+        {
+            Up = 0,
+            Down = 1
+        }
     }
 }

@@ -77,7 +77,7 @@ public class EventManager
     /// </summary>
     public void _OnGameAgain()
     {
-        if (onGameAgain != null)onGameAgain();
+        if (onGameAgain != null) onGameAgain();
     }
     /// <summary>
     /// 游戏结束事件
@@ -98,14 +98,14 @@ public class EventManager
     /// </summary>
     public void _OnSpotGame()
     {
-        if (onSpotGame != null)onSpotGame();
+        if (onSpotGame != null) onSpotGame();
     }
     /// <summary>
     /// 游始继续事件
     /// </summary>
     public void _OnContinueGame()
     {
-        if (onContinueGame != null)onContinueGame();
+        if (onContinueGame != null) onContinueGame();
     }
 
 
@@ -138,19 +138,19 @@ public class EventManager
     /// <summary>
     ///单片机注册成功事件
     /// </summary>
-    public void _OnREG(string[] value) { if (OnREG != null) OnREG( value); }
+    public void _OnREG(string[] value) { if (OnREG != null) OnREG(value); }
     /// <summary>
     ///单片机训练数据事件
     /// </summary>
-    public void _OnDAT(string[] value) { if (OnDAT != null) OnDAT( value); }
+    public void _OnDAT(string[] value) { if (OnDAT != null) OnDAT(value); }
     /// <summary>
     ///单片机传送训练报告数据事件
     /// </summary>
-    public void _OnRPT(string[] value) { if (OnRPT != null) OnRPT( value); }
+    public void _OnRPT(string[] value) { if (OnRPT != null) OnRPT(value); }
     /// <summary>
     ///单片机状态数据事件
     /// </summary>
-    public void _OnCOD(string[] value) { if (OnCOD != null) OnCOD( value); }
+    public void _OnCOD(string[] value) { if (OnCOD != null) OnCOD(value); }
 
 
 
@@ -158,16 +158,12 @@ public class EventManager
     /// <summary>
     /// 接收信息相关委托
     /// </summary>
-    public delegate void BikeSocketData(GameDataPacketBike  value);
+    public delegate void BikeSocketData(GameDataPacketBike value);
 
     /// <summary>
     ///接收GameData类型信息相关成功事件
     /// </summary>
     public event BikeSocketData OnGameData;
-    /// <summary>
-    ///断开连接
-    /// </summary>
-    public event BikeSocketData OnDisconnect;
     /// <summary>
     /// 接收信息相关委托
     /// </summary>
@@ -180,11 +176,19 @@ public class EventManager
     /// <summary>
     /// 接收信息相关委托
     /// </summary>
-    public delegate void ZCInfoSocketData(BikeZCInfo value);
+    public delegate void ZCInfoSocketData(List<BikeZCInfo> value);
     /// <summary>
     /// 注册服务器成功
     /// </summary>
     public event ZCInfoSocketData onGameZCData;
+    /// <summary>
+    /// 接收信息相关委托
+    /// </summary>
+    public delegate void OnDisconnectData(BikeZCInfo value);
+    /// <summary>
+    ///断开连接
+    /// </summary>
+    public event OnDisconnectData OnDisconnect;
 
 
 
@@ -199,9 +203,9 @@ public class EventManager
     /// <summary>
     ///接收GameData类型信息相关成功事件
     /// </summary>
-    public void _OnGameZCData(BikeZCInfo value) { if (onGameZCData != null) onGameZCData(value); }
+    public void _OnGameZCData(List<BikeZCInfo> value) { if (onGameZCData != null) onGameZCData(value); }
     /// <summary>
     ///断开连接
     /// </summary>
-    public void _OnDisconnect(GameDataPacketBike value) { if (OnDisconnect != null) OnDisconnect(value); }
+    public void _OnDisconnect(BikeZCInfo value) { if (OnDisconnect != null) OnDisconnect(value); }
 }

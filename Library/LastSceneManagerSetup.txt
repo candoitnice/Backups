@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Project/Sources/Scene/MianBallute.unity
+  isLoaded: 1
+  isActive: 1

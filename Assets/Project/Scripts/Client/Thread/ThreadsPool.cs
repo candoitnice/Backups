@@ -33,8 +33,6 @@ public class ThreadsPool : MonoBehaviour
     }
     public Queue<ArgmentParam> queue = new Queue<ArgmentParam>();
 
-    public Queue<Argment> dataQueue = new Queue<Argment>();
-
     private void Update()
     {
         if (queue.Count > 0)
@@ -50,22 +48,7 @@ public class ThreadsPool : MonoBehaviour
                 Debug.Log(ex.Message);
             }
         }
-
-        if (dataQueue.Count > 0)
-        {
-            Argment ar = dataQueue.Dequeue();
-            try
-            {
-                if(ar.callback!=null)
-                {
-                    ar.callback(ar.data,ar.send);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.Log(ex.Message);
-            }
-        }
+        
     }
 
     private void OnDestroy()

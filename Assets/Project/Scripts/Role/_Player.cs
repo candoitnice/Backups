@@ -16,7 +16,7 @@ public class _Player : RoleBase
     public override void Update()
     {
         base.Update();
-            Move();
+        Move();
     }
     /// <summary>
     /// 初始化
@@ -29,10 +29,64 @@ public class _Player : RoleBase
     /// <param name="_name"></param>
     /// <param name="sex"></param>
     /// <param name="age"></param>
-    public override void InitData(Vector3 pos, string Name = "player", string ID = "0", bool isMainPlay = false, string no = "111111111", string _name = "ZS", string sex = "30", string age = "M")
+    public override void InitData(bool isConnect = true, Vector3 pos = default(Vector3), string Name = "player", string ID = "0", bool isMainPlay = false, string no = "111111111", string _name = "ZS", string sex = "30", string age = "M")
     {
-        base.InitData(pos, Name, ID, isMainPlay, no, _name, sex, age);
+        base.InitData(isConnect, pos, Name, ID, isMainPlay, no, _name, sex, age);
     }
+
+    public override void SetInfo(float speed, float slope, float heartRate, float L_symmetry, float balloonCapacity)
+    {
+        base.SetInfo(speed, slope, heartRate, L_symmetry, balloonCapacity);
+        this.balloonCapacity = balloonCapacity;
+    }
+
+    float _balloonCount;
+    float _balloonCapacity = 5;
+    public List<GameObject> cloneBalute = new List<GameObject>();
+    public override void Zoom()
+    {
+        base.Zoom();
+        if (balluteCount > _balloonCount && balloonCapacity < _balloonCapacity)//balloonCapacity<_balloonCapacity
+        {
+            GameObject cb = Recovery.GameManager.instance.EstablishProp("Prefabs/Ballute/" + _ballut.sprite.name);
+            GameObject g = Recovery.GameManager.instance.EstablishProp(Source.Effect.blast, ballut.transform.position);
+            Destroy(g, 3);
+            cb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            cb.transform.position = _ballut.transform.position;
+            cb.transform.eulerAngles = _ballut.transform.eulerAngles;
+            ballut.localScale = Vector3.zero;
+            c = 0;
+            balloonCapacity = 0f;
+            cb.AddComponent<BalluteMove>();
+            cloneBalute.Add(cb);
+
+            if (nowCount >= BalluteSpriteArray.Instance.greenSprite.Length)//--
+                nowCount = 0;
+            if (UsedCount < Recovery.GameData.Instance.allBall.Count)
+            {
+                if (Recovery.GameData.Instance.allBall[UsedCount].count == balluteCount)
+                {
+                    Debug.Log(Recovery.GameData.Instance.Number + " + _Player ==> " + balluteCount);
+                    _ballut.sprite = Recovery.GameManager.instance.GetSprite(nowCount, Recovery.GameData.Instance.allBall[UsedCount].balluteType);
+
+                    UsedCount++;
+                }
+                else
+                {
+                    _ballut.sprite = Recovery.GameManager.instance.GetSprite(nowCount);
+                }
+            }
+            else
+            {
+                _ballut.sprite = Recovery.GameManager.instance.GetSprite(nowCount);
+            }
+
+        }
+
+        _balloonCount = balluteCount;
+        _balloonCapacity = balloonCapacity;
+    }
+
     /// <summary>
     /// 移动
     /// </summary>
@@ -40,32 +94,19 @@ public class _Player : RoleBase
     {
         if (Recovery.GameData.Instance.isPlayGame)
         {
-            if (Mathf.Abs(distance-Recovery.GameData.Instance.mainPlayer.distance)*6<350)
-                base.Move();
+            Zoom();
+            base.Move();
         }
-        transform.forward = Direction(new Vector3(transform.position.x, transform.position.y + 1 * 5f, transform.position.z),
-            new Vector3(transform.position.x, transform.position.y + 1 * 5f, transform.position.z - 1 * 5f), -Vector3.up);
-    }
-    /// <summary>
-    /// 方向
-    /// </summary>
-    /// <param name="trans"></param>
-    /// <param name="trans2"></param>
-    /// <param name="direction"></param>
-    /// <returns></returns>
-    public override Vector3 Direction(Vector3 trans, Vector3 trans2, Vector3 direction)
-    {
-        return base.Direction(trans, trans2, direction);
     }
 
-    public void SetPos()
+    public override void AgainGame()
     {
-        if (Recovery.GameData.Instance.mainPlayer.frequency <= 0)
-            transform.position = pos;
-        else
+        base.AgainGame();
+        for (int i = 0; i < cloneBalute.Count; i++)
         {
-            transform.position = pos - new Vector3(0, 0, 252 * Recovery.GameData.Instance.mainPlayer.frequency);
+            if (cloneBalute[i] != null)
+                Destroy(cloneBalute[i]);
         }
+        cloneBalute.Clear();
     }
-
 }

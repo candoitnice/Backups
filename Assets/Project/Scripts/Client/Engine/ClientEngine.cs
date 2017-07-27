@@ -17,8 +17,14 @@ public class ClientEngine : IClient
         //    TimeTick.Instance.AddDelayEvent(Init, null, 0.1f);
         //}
         EventManager.Instance.onApplicationQuit+= Instance_OnApplicationQuitEvent;
-        Main.Instance.OnSendDataEvent += Instance_OnSendDataEvent;
+        Recovery.Main.Instance.OnSendDataEvent += Instance_OnSendDataEvent;
+        EventManager.Instance.onGameUpdate += Instance_onGameUpdate;
 
+    }
+
+    private void Instance_onGameUpdate()
+    {
+        if (client != null) client.Service();
     }
 
     private void Instance_OnApplicationQuitEvent()

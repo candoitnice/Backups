@@ -133,7 +133,7 @@ public class BikeClient
     /// </summary>
     public  void close()
     {
-        GameManager.instance.queue.Enqueue("BikeClose");
+        Recovery.GameManager.instance.queue.Enqueue("BikeClose");
         isRecived = false;
         if (tcpClient != null)
         {

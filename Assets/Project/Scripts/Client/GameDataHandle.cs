@@ -35,7 +35,10 @@ namespace Assets.Project.Scripts.Client
                     Recovery.InfoHandle.Instance.gameDataPacketBikeQueue.Enqueue(ParameterTool.GetParmerer<GameDataPacketBike>(Parma.Parameters, subcode));
                     break;
                 case SubCode.DKLJ:
-                    EventManager.Instance._OnDisconnect(new GameDataPacketBike());
+                    EventManager.Instance._OnDisconnect(ParameterTool.GetParmerer<BikeZCInfo>(Parma.Parameters, subcode));
+                    break;
+                case SubCode.BDATA:
+                    UIUpdateManaget.Instance.SetRankingList();
                     break;
             }
         }
